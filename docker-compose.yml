@@ -1,0 +1,21 @@
+version: '1'
+services:
+  app:
+
+    build: .
+    ports:
+      - "80:80"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/nest
+      - NODE_ENV=production
+
+  mongo:
+    image: mongo:6.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
+
